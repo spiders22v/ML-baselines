@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 
 
 # 엑셀 파일 읽어오기
-excel_file_name = 'dataset_temp.xlsx'
+excel_file_name = './data/dataset_temp.xlsx'
 current_directory = os.getcwd()
 excel_file_path = os.path.join(current_directory, excel_file_name)
 df = pd.read_excel(excel_file_path)
