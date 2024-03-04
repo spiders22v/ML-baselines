@@ -1,3 +1,5 @@
+# 유명한 분류 문제인 아이리스(iris) 데이터 세트를 사용하여 붓꽃의 종(species)을 예측하는 분류 모델을 만드는 예제
+
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
