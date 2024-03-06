@@ -25,11 +25,14 @@ nvidia-smi
 
 ## CUDA 설치
 
-1) https://developer.nvidia.com/cuda-toolkit-archive 에서 필요한 버전으로 설치 
-2) 아래 코드 실행 (CUDA 11.8, ubuntu 22.04, runfile(local) 기준)
-
+1) https://developer.nvidia.com/cuda-toolkit-archive 에서 필요한 버전으로 설치
+- CUDA 11.8, ubuntu 22.04, runfile(local) 기준
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda_11.8.0_520.61.05_linux.run
+```
+2) 다운받은 파일 설치
+
+```bash
 sudo sh cuda_11.8.0_520.61.05_linux.run
 ```
 - 설치 옵션에서 Driver는 해제(호환 Nvidia 드라이브를 설치했다면)
