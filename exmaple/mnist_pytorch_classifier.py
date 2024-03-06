@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
+import time
 
 # 2. MNIST 데이터셋 로드
 transform = transforms.Compose([
@@ -35,6 +36,13 @@ class Net(nn.Module):
 # 모델 인스턴스 생성
 model = Net()
 
+# CPU 또는 GPU 선택
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f"Using {device}")
+
+# 모델을 선택한 디바이스로 이동
+model.to(device)
+
 # 4. 손실 함수와 최적화기 정의
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 criterion = nn.CrossEntropyLoss()
@@ -42,6 +50,7 @@ criterion = nn.CrossEntropyLoss()
 # 5. 모델 훈련 함수
 def train(model, device, train_loader, optimizer, epoch):
     model.train()
+    start_time = time.time()
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
@@ -50,7 +59,11 @@ def train(model, device, train_loader, optimizer, epoch):
         loss.backward()
         optimizer.step()
         if batch_idx % 100 == 0:
-            print(f'Train Epoch: {epoch} [{batch_idx * len(data)}/{len(train_loader.dataset)} ({100. * batch_idx / len(train_loader):.0f}%)]\tLoss: {loss.item():.6f}')
+            elapsed_time = time.time() - start_time
+            print(f'Train Epoch: {epoch} [{batch_idx * len(data)}/{len(train_loader.dataset)} ({100. * batch_idx / len(train_loader):.0f}%)]\tLoss: {loss.item():.6f}\tElapsed Time: {elapsed_time:.2f} seconds')
+
+    total_time = time.time() - start_time
+    print(f'Total training time for Epoch {epoch}: {total_time:.2f} seconds')
 
 # 6. 모델 평가 함수
 def test(model, device, test_loader):
@@ -68,8 +81,6 @@ def test(model, device, test_loader):
     print(f'\nTest set: Average loss: {test_loss:.4f}, Accuracy: {correct}/{len(test_loader.dataset)} ({100. * correct / len(test_loader.dataset):.0f}%)\n')
 
 # 7. 훈련 및 평가 실행
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model.to(device)
 for epoch in range(1, 6):  # 5 epochs
     train(model, device, train_loader, optimizer, epoch)
     test(model, device, test_loader)

@@ -27,7 +27,7 @@ train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True, num_worker
 # Create an instance of the model and move it to the GPU
 model = SimpleNet()
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model = nn.DataParallel(model, device_ids=[0, 1, 2, 3])  # Use DataParallel for multi-GPU training
+model = nn.DataParallel(model, device_ids=[0])  # Use DataParallel for multi-GPU training
 model = model.to(device)
 
 # Define the loss function and optimizer
