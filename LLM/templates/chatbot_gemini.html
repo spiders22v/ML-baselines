@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot with Google Gemini</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h1>Chatbot with Google Gemini</h1>
+
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <input id="user-script" autocomplete="off" />
+        <button id="send-button" onclick="sendUserScript()">Send</button>
+    </div>
+
+    <script>
+        function sendUserScript() {
+            // send 버튼 비활성화
+            $('#send-button').prop('disabled', true);
+
+            var userScript = $('#user-script').val();
+            $('#chat-messages').append('<div class="User">User: ' + userScript + '</div>');
+
+            $.ajax({
+                type: 'POST',
+                url: '/get_response',
+                data: { user_script: userScript },
+                success: function(data) {
+                    var chatbotResponse = data.chatbot_response;
+
+                    // 텍스트를 줄바꿈으로 나누어 배열로 변환
+                    var responseLines = chatbotResponse.split('\n');
+
+                    // Gemini 레이블 출력
+                    $('#chat-messages').append('<div class="Gemini">Gemini:</div>');
+
+                    // 각 줄을 div 요소로 추가하여 출력
+                    for (var i = 0; i < responseLines.length; i++) {
+                        $('#chat-messages').append('<div class="Gemini">' + responseLines[i] + '</div>');
+                    }
+
+                    // 스크롤을 자동으로 아래로 이동
+                    var chatMessages = document.getElementById('chat-messages');
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                },
+                complete: function() {
+                    // send 버튼 활성화
+                    $('#send-button').prop('disabled', false);
+                    // 사용자 입력창 초기화
+                    $('#user-script').val('');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
