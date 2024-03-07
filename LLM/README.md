@@ -12,7 +12,7 @@ pip install flask google-generativeai
 
 ## Configuration
 
-1. Obtain a [Google Gemini API key]([Samsung Gauss Language](https://aistudio.google.com/)) and replace `"YOUR_API_KEY"` with your actual API key in the `genai.configure(api_key="YOUR_API_KEY")` line.
+1. Obtain a [Google Gemini API key](https://aistudio.google.com/) and replace `"YOUR_API_KEY"` with your actual API key in the `genai.configure(api_key="YOUR_API_KEY")` line.
 
 ## Running the Application
 
