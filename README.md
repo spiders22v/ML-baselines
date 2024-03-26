@@ -62,12 +62,12 @@ nvcc -V
 1) https://developer.nvidia.com/rdp/cudnn-archive 로 이동 후 로그인 및 동의하고 설치한 CUDA 버전에 맞는 cuDNN 다운로드
 2) tar.xz로 압축된 파일을 풀기 (v8.9.6 기준)
 ```bash
-tar -xvf cudnn-linux-x86_64-8.9.6.50_cuda11-archive.tar.xz
+tar -xvf cudnn-linux-x86_64-8.9.6.50_cuda12-archive.tar.xz
 ```
 3) 압축 풀린 파일들을 /usr/local/로 붙여놓고 권한설정
 ```bash
-sudo cp cudnn-linux-x86_64-8.9.6.50_cuda11-archive/include/cudnn*.h /usr/local/cuda/include
-sudo cp cudnn-linux-x86_64-8.9.6.50_cuda11-archive/lib/libcudnn* /usr/local/cuda/lib64
+sudo cp cudnn-linux-x86_64-8.9.6.50_cuda12-archive/include/cudnn*.h /usr/local/cuda/include
+sudo cp cudnn-linux-x86_64-8.9.6.50_cuda12-archive/lib/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
 ```
 4) 아래 명령어 입력시 제대로 출력되면 성공
