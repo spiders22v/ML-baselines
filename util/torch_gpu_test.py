@@ -1,6 +1,7 @@
 # GPU 성능 비교를 위한 코드
 # RTX 3090      - Epoch 당 6.2~6.4초
 # AGX Orin CPU  - Epoch 당 18.3초  
+# AGX Orin CUDA  - Epoch 당 23.3초  
 
 import torch
 import torch.nn as nn
