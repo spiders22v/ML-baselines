@@ -75,11 +75,42 @@ sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
 cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
 ```
 
- 추가 옵션) 요즘은 바로 설치 가능한듯 (중간에 ubuntu2204/x86_64는 버전에 맞게 변경)
+## NVIDIA 패키지 저장소를 설정하고 CUDA, cuDNN 설치하는 법
+1) NVIDIA의 CUDA 저장소 키를 포함하는 cuda-keyring_1.1-1_all.deb 파일을 다운로드
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+```
+- ubuntu2204/x86_64는 설치버전에 맞게 변경
+- ex) ubuntu2004/arm64, ubuntu2004/x86_64, ubuntu2404/x86_64, ubuntu2404/sbsa 등
+
+2) dpkg 명령으로 다운로드한 cuda-keyring 패키지를 설치
+```bash
 sudo dpkg -i cuda-keyring_1.1-1_all.deb
+```
+
+3) 로컬 apt 패키지 인덱스를 업데이트
+```bash
 sudo apt-get update
+```
+
+4) CUDA SDK 설치
+```bash
+sudo apt-get install cuda-toolkit
+```
+
+5) PATH추가
+```bashrc
+export PATH="/usr/local/cuda-12.4/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda-12.4/lib64:$LD_LIBRARY_PATH"
+```
+
+6) cuDNN 설치
+```bash
 sudo apt-get -y install cudnn9-cuda-12
+```
+
+7) cuDNN 설치 확인
+```bash
+cat /usr/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
 ```
 
