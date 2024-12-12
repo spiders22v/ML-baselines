@@ -97,6 +97,8 @@ sudo apt-get update
 ```bash
 sudo apt-get install cuda-toolkit
 ```
+- apt-cache search cuda-toolkit 으로 설치 버전을 조회하고 해당 버전 설치
+- ex) sudo apt-get install cuda-toolkit-12-4
 
 5) PATH추가
 ```bashrc
