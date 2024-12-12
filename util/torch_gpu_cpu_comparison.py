@@ -1,8 +1,9 @@
 # GPU, CPU 성능 비교
-# (1) NVIDIA AGX ORIN                GPU(5.06s) vs CPU(213.38s)   42.15배 차이
+# (1) AMD 5975WX RTX4090             GPU(0.80s) vs CPU(  7.95s)    9.93배 차이
 # (2) AMD 3965WX RTX3090             GPU(1.05s) vs CPU(  8.62s)    8.11배 차이 
 # (3) i9-13980HX RTX4080(Laptop)     GPU(1.25s) vs CPU( 20.12s)   16.12배 차이 
 # (4) AMD 5600 RTX3060               GPU(2.17s) vs CPU( 32.32s)   14.89배 차이 
+# (5) NVIDIA AGX ORIN                GPU(5.06s) vs CPU(213.38s)   42.15배 차이
 
 import torch
 import torch.nn as nn
