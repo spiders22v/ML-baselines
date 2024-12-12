@@ -70,13 +70,16 @@ sudo cp cudnn-linux-x86_64-8.9.6.50_cuda12-archive/include/cudnn*.h /usr/local/c
 sudo cp cudnn-linux-x86_64-8.9.6.50_cuda12-archive/lib/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
 ```
- 추가 옵션) 요즘은 바로 설치 가능한듯
-```bash
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
-sudo dpkg -i cuda-keyring_1.1-1_all.deb
-sudo apt-get -y install cudnn9-cuda-12
-```
 4) 아래 명령어 입력시 제대로 출력되면 성공
 ```bash
 cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
 ```
+
+ 추가 옵션) 요즘은 바로 설치 가능한듯 (중간에 ubuntu2204/x86_64는 버전에 맞게 변경)
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cudnn9-cuda-12
+```
+
