@@ -26,14 +26,14 @@ nvidia-smi
 ## CUDA 설치
 
 1) https://developer.nvidia.com/cuda-toolkit-archive 에서 필요한 버전으로 설치
-- CUDA 12.1.1, ubuntu 22.04, runfile(local) 기준
+- CUDA 12.4.1, ubuntu 22.04, runfile(local) 기준
 ```bash
-wget https://developer.download.nvidia.com/compute/cuda/12.1.1/local_installers/cuda_12.1.1_530.30.02_linux.run
+wget https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
 ```
 2) 다운받은 파일 설치
 
 ```bash
-sudo sh cuda_12.1.1_530.30.02_linux.run
+sudo sh cuda_12.4.1_550.54.15_linux.run
 ```
 - 설치 옵션에서 Driver는 해제(호환 Nvidia 드라이브를 설치했다면)
 
@@ -69,6 +69,12 @@ tar -xvf cudnn-linux-x86_64-8.9.6.50_cuda12-archive.tar.xz
 sudo cp cudnn-linux-x86_64-8.9.6.50_cuda12-archive/include/cudnn*.h /usr/local/cuda/include
 sudo cp cudnn-linux-x86_64-8.9.6.50_cuda12-archive/lib/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+```
+ 추가 옵션) 요즘은 바로 설치 가능한듯
+```bash
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get -y install cudnn9-cuda-12
 ```
 4) 아래 명령어 입력시 제대로 출력되면 성공
 ```bash
