@@ -93,7 +93,7 @@ sudo dpkg -i cuda-keyring_1.1-1_all.deb
 sudo apt-get update
 ```
 
-4) CUDA SDK 설치
+4) CUDA SDK 설치 (가장 최신버전으로 설치되므로 조심)
 ```bash
 sudo apt-get install cuda-toolkit
 ```
